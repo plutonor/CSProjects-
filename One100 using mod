@@ -20,6 +20,7 @@ public class One100 {
    }
    
    public static int[] askNum() {
+	   //gives error message if more than 1 number
    //asks and stores a number between 1 and MAX
       Scanner console = new Scanner(System.in);
       int[] num = {0, 0};
@@ -47,6 +48,8 @@ public class One100 {
             } else if (spaces <= 1){
                num[spaces] += ((text.charAt(i) - 48) * ((int) Math.pow(10, text.length() - 1 - i)));
                //This adds the number in the correct decimal place
+               //doesn't if there are multiple numbers
+               //((int) Math.pow(10, text.length() - 1 - i)) is too big for the first number of 2
             }
          }
       }
@@ -56,8 +59,16 @@ public class One100 {
     		  okay2 = false;
     	  }
       }
-      if (!good || (num[0] < 1 || num[0] > MAX || !okay2) && !quit) {
+      boolean okay1 = true;
+	  if (num[0] < 1 || num[0] > MAX) {
+		  okay1 = false;
+	  }
+	  if (spaces > 1) {
+		  good = false;
+	  }
+      if ((!good || !okay1 || !okay2) && !quit) {
       //gives an error message for a bad entry and asks again
+    	 System.out.println(num[0] + ", " + num[1]);
          System.out.println("ERROR! invalid entry");
          num = askNum();
       }
@@ -65,6 +76,7 @@ public class One100 {
       //sets the number as 0 if the user wants to quit
          num[0] = 0;
       }
+ 	  System.out.println(num[0] + ", " + num[1]);
       return num;
    }
    
