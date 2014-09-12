@@ -30,6 +30,7 @@ public class One100 {
       //quit is to tell if the input was quit
       int spaces = 0;
       boolean pNums = false;
+      int marker = 0;
       System.out.println("Please input an integer(s) from 1 to " + MAX + ".");
       String text = console.nextLine();
       if (text.equals("quit") || text.equals("Quit")) {
@@ -45,6 +46,7 @@ public class One100 {
             } else if (text.charAt(i) == ' ') {
             	spaces++;
             	pNums = true;
+            	marker = i;
             } else if (spaces <= 1){
                num[spaces] += ((text.charAt(i) - 48) * ((int) Math.pow(10, text.length() - 1 - i)));
                //This adds the number in the correct decimal place
@@ -52,6 +54,9 @@ public class One100 {
                //((int) Math.pow(10, text.length() - 1 - i)) is too big for the first number of 2
             }
          }
+      }
+      if (pNums) {
+    	  num[0] /= (int) Math.pow(10, text.length() - marker);
       }
       boolean okay2 = true;
       if (pNums) {
