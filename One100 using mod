@@ -73,7 +73,6 @@ public class One100 {
 	  }
       if ((!good || !okay1 || !okay2) && !quit) {
       //gives an error message for a bad entry and asks again
-    	 System.out.println(num[0] + ", " + num[1]);
          System.out.println("ERROR! invalid entry");
          num = askNum();
       }
@@ -81,7 +80,6 @@ public class One100 {
       //sets the number as 0 if the user wants to quit
          num[0] = 0;
       }
- 	  System.out.println(num[0] + ", " + num[1]);
       return num;
    }
    
