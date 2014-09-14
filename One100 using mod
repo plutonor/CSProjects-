@@ -49,9 +49,7 @@ public class One100 {
             	marker = i;
             } else if (spaces <= 1){
                num[spaces] += ((text.charAt(i) - 48) * ((int) Math.pow(10, text.length() - 1 - i)));
-               //This adds the number in the correct decimal place
-               //doesn't if there are multiple numbers
-               //((int) Math.pow(10, text.length() - 1 - i)) is too big for the first number of 2
+               //This adds the integer to the right number, in the correct decimal place
             }
          }
       }
@@ -137,17 +135,23 @@ public class One100 {
     	  factors1.clear();
     	  factors1.add(gCF);
       }
+      if (num[1] > 0) {
+    	  factors1.add(0);
+      }
       return factors1;
    }
    
    public static void toText(ArrayList<Integer> factors) {
-      System.out.print("factors: ");
-      System.out.print("" + factors.get(0));
-      //end post
-      for (int current = 1; current < factors.size() - 1; current++) {
-      //simple to text for loop
-         System.out.print(", " + factors.get(current));
-      }
+	      if (factors.get(1) == 0) {
+	    	  System.out.print("Greatest common factor: " + factors.get(0));
+	      } else {
+		      System.out.print("factors: ");
+		      System.out.print("" + factors.get(0));
+		      for (int current = 1; current < factors.size() - 2; current++) {
+		      //simple to text for loop
+		         System.out.print(", " + factors.get(current));
+		      }
+	      }
       System.out.println();
       //prepares for next input
    }
